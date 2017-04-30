@@ -1,1 +1,1 @@
-# machine learning course rrom Coursera
+# machine learning course from Coursera
