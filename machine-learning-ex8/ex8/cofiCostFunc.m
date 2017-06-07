@@ -50,14 +50,14 @@ for i = 1 : num_movies,
     userWhoRatedList = find(R(i, :) == 1); 
     thetaTemp = Theta(userWhoRatedList,:); 
     Ytemp = Y(i, userWhoRatedList); 
-    X_grad(i,:) = (X(i,:) * thetaTemp' - Ytemp) * thetaTemp; 
+    X_grad(i,:) = (X(i,:) * thetaTemp' - Ytemp) * thetaTemp + lambda * X(i,:); 
 end 
 
 for i = 1 : num_users, 
     movieHasRatingList = find(R(:, i) == 1); 
     XTemp = X(movieHasRatingList,:); 
     Ytemp = Y(movieHasRatingList, i); 
-    Theta_grad(i,:) = ((XTemp * Theta(i,:)' - Ytemp))' * XTemp; 
+    Theta_grad(i,:) = ((XTemp * Theta(i,:)' - Ytemp))' * XTemp + lambda * Theta(i,:); 
 
 end 
 
